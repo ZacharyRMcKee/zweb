@@ -1,5 +1,13 @@
-module.exports = {
+var path = require('path');
 
+module.exports = {
+    mode: 'development',
+    output: {
+      path: path.resolve(__dirname, 'dist/'),
+      filename: 'bundle.js',
+    },
+    entry: './src/index.js',
+    devtool: 'inline-source-map',
     module: {
       rules: [
         {
@@ -10,5 +18,15 @@ module.exports = {
           }
         }
       ]
+    },
+    devServer: {
+
+      // host
+      contentBase:'dist',
+      watchContentBase: true,
+      hot: true,
+      compress: true,
+
+      port: 9001
     }
   };
