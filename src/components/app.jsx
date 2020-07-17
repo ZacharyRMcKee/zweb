@@ -1,12 +1,13 @@
 import * as React from "react";
+import Button from '@material-ui/core/Button';
 
-export class App extends React.Component {
+const App = () => (
+  <div>
+    <h1>Test React Page</h1>
+    <Button>
+      Test Button
+    </Button>
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        Hello, world!
-      </div>
-    );
-  }
-}
+export default App;
