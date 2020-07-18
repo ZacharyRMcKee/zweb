@@ -12,8 +12,7 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { purple } from "@material-ui/core/colors";
 import Header from './header.jsx';
 import Footer from './footer.jsx';
-
-const drawerWidth = 240;
+import Navigation from './navigation.jsx';
 
 
 const theme = createMuiTheme({
@@ -43,59 +42,18 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    height: "100%",
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
   // necessary for content to be below app bar
-  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
-  },
-  navItem: {
-    height: '60%',
-    textAlign: 'center',
-  },
-  listItemText:
-  {
-    fontSize: '1.5em'
   }
 }))
-
-
-
-
-
 export default function App() {
   const classes = useStyles(theme);
   return (
     <div className = {classes.root}>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-        >
-          <List>
-            {['Home', 'Projects','Contact', 'Resume'].map((text, index) => (
-              <ListItem button key={text} className={classes.navItem}>
-                <ListItemText align="center" classes={{primary: classes.listItemText}} primary={text} />
-              </ListItem>
-            ))}
-          </List>
-    </Drawer>
+      <Navigation />
     <main className={classes.content}>
 
       <ThemeProvider theme={theme}>
